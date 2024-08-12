@@ -32,6 +32,11 @@ class  ProfileEditViewBody extends StatelessWidget {
           print(BlocProvider.of<ShowProfileCubit>(context).profileUserModel!.firstName);
           print(BlocProvider.of<ShowProfileCubit>(context).profileUserModel!.lastName);
           Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Update Your Account Successfully"),
+            ),
+          );
           isLoading=false;
         }
         else if(state is EditProfileFailure){

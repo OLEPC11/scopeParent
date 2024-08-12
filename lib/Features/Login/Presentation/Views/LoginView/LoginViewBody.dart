@@ -61,6 +61,11 @@ class LoginViewBody extends StatelessWidget {
           BlocProvider.of<ShowEvaluationsMonthCubit>(context).accessToken=BlocProvider.of<LoginCubit>(context).loginUserModel!.accessToken;
           BlocProvider.of<ShowAppointmentsStateCubit>(context).accessToken=BlocProvider.of<LoginCubit>(context).loginUserModel!.accessToken;
           BlocProvider.of<ShowRegistrationRequestStateCubit>(context).accessToken=BlocProvider.of<LoginCubit>(context).loginUserModel!.accessToken;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Login Successfully"),
+            ),
+          );
           isLoading=false;
         }
         else if(state is LoginFailure){

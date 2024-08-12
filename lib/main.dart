@@ -110,4 +110,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-String ipServer="192.168.244.55";
+String ipServer="192.168.131.55";

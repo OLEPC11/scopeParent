@@ -19,6 +19,7 @@ class _DisplayAppointmentViewBodyState extends State<DisplayAppointmentViewBody>
 
   final reasonController=TextEditingController();
   bool isLoading=false;
+  final _formField=GlobalKey<FormState>();
   Future openDialog(dynamic index)=> showDialog(
     context: context,
     builder: (context)=>BlocConsumer<AddReservationCubit,AddReservationState>(
@@ -30,6 +31,11 @@ class _DisplayAppointmentViewBodyState extends State<DisplayAppointmentViewBody>
           print("Done");
           Navigator.pop(context);
           isLoading=false;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Your Booking Add Successfully"),
+            ),
+          );
         }
         else if(state is AddReservationFailure){
           ScaffoldMessenger.of(context).showSnackBar(
@@ -43,41 +49,47 @@ class _DisplayAppointmentViewBodyState extends State<DisplayAppointmentViewBody>
       builder:(context,state){
         return ModalProgressHUD(
           inAsyncCall: isLoading,
-          child:   AlertDialog(
-            title: TextWidget(
-              text: LocaleKeys.Add_Your_Reason.tr(),
-              color: const Color(0xFF7DA4FF),
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              fontFamily: "Outfit",
-            ),
-            content: CustomTextFormFieldWidget(
-              obscureText: false,
-              controller: reasonController,
-              hintText:LocaleKeys.Enter_The_Reason.tr(),
-              icon: const Icon(
-                Icons.question_answer,
-                color: Color(0xFF7DA4FF),
-                size: 20,
+          child: Form(
+            key: _formField,
+            child:  AlertDialog(
+              title: TextWidget(
+                text: LocaleKeys.Add_Your_Reason.tr(),
+                color: const Color(0xFF7DA4FF),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: "Outfit",
               ),
-              validator: (value){
-                if(value!.isEmpty){
-                  return(LocaleKeys.Enter_The_Reason.tr());
-                }},
-            ),
-            actions: [
-              CustomButtonWidget(
-                onTap: ()async{
-                  print(index);
-                  BlocProvider.of<AddReservationCubit>(context).addReservationServices(
-                    appointmentId: index.toString(),
-                    description: reasonController.text,
-                    accessToken: BlocProvider.of<AddReservationCubit>(context).accessToken,
-                  );
-                },
-                text: LocaleKeys.Next.tr(),
+              content: CustomTextFormFieldWidget(
+                obscureText: false,
+                controller: reasonController,
+                hintText:LocaleKeys.Enter_The_Reason.tr(),
+                icon: const Icon(
+                  Icons.question_answer,
+                  color: Color(0xFF7DA4FF),
+                  size: 20,
+                ),
+                validator: (value){
+                  if(value!.isEmpty){
+                    return(LocaleKeys.Enter_The_Reason.tr());
+                  }},
               ),
-            ],
+              actions: [
+                CustomButtonWidget(
+                  onTap: ()async{
+                    if(_formField.currentState!.validate()) {
+                      print(index);
+                      BlocProvider.of<AddReservationCubit>(context).addReservationServices(
+                        appointmentId: index.toString(),
+                        description: reasonController.text,
+                        accessToken: BlocProvider
+                            .of<AddReservationCubit>(context)
+                            .accessToken,
+                      );
+                    }},
+                  text: LocaleKeys.Next.tr(),
+                ),
+              ],
+            ),
           ),
         );
       },

@@ -56,6 +56,11 @@ class  RegisterViewBody extends StatelessWidget {
           BlocProvider.of<ShowEvaluationsMonthCubit>(context).accessToken=BlocProvider.of<RegisterCubit>(context).registerUserModel!.accessToken;
           BlocProvider.of<ShowAppointmentsStateCubit>(context).accessToken=BlocProvider.of<RegisterCubit>(context).registerUserModel!.accessToken;
           BlocProvider.of<ShowRegistrationRequestStateCubit>(context).accessToken=BlocProvider.of<RegisterCubit>(context).registerUserModel!.accessToken;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Add Account Successfully"),
+            ),
+          );
           isLoading=false;
         }
         else if(state is RegisterFailure){

@@ -135,6 +135,11 @@ class _AddRegistrationRequestViewBodyState extends State<AddRegistrationRequestV
         else if(state is AddRegistrationRequestSuccess){
           print("Done");
           Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Add Registration Request Successfully"),
+            ),
+          );
           isLoading=false;
         }
         else if(state is AddRegistrationRequestFailure){
