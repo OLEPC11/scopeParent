@@ -24,7 +24,6 @@ class  ProfileEditViewBody extends StatelessWidget {
           print(BlocProvider.of<EditProfileCubit>(context).firstName);
           print(BlocProvider.of<EditProfileCubit>(context).lastName);
           print(BlocProvider.of<EditProfileCubit>(context).phoneNumber);
-          print(BlocProvider.of<EditProfileCubit>(context).email);
           print(BlocProvider.of<EditProfileCubit>(context).message);
           BlocProvider.of<ShowProfileCubit>(context).showProfileServices(
             accessToken:  BlocProvider.of<EditProfileCubit>(context).accessToken,
@@ -56,7 +55,7 @@ class  ProfileEditViewBody extends StatelessWidget {
               ProfileEditImageWidget(),
               ContainerWidget(
                 padding: const EdgeInsets.only(top: 40,left: 20,right: 20),
-                height:520,
+                height:480,
                 width:220,
                 widget:ProfileEditFieldsWidget(),
               ),

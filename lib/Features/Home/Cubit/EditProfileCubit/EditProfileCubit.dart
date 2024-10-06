@@ -10,7 +10,6 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   dynamic firstName;
   dynamic lastName;
   dynamic phoneNumber;
-  dynamic email;
   dynamic password;
   dynamic image;
   dynamic accessToken;
@@ -20,7 +19,6 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     required dynamic firstName,
     required dynamic lastName,
     required dynamic phoneNumber,
-    required dynamic email,
     required dynamic password,
     required dynamic accessToken,
   }) async{
@@ -32,7 +30,6 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           firstName:firstName,
           lastName:lastName,
           phoneNumber:phoneNumber,
-          email:email,
           password: password,
           accessToken: accessToken,
         );
@@ -44,7 +41,6 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           firstName:firstName,
           lastName:lastName,
           phoneNumber:phoneNumber,
-          email:email,
           password: password,
           accessToken: accessToken,
         );

@@ -22,7 +22,6 @@ class _ProfileEditFieldsWidgetState extends State< ProfileEditFieldsWidget>{
     firstNameController.text=BlocProvider.of<ShowProfileCubit>(context).profileUserModel!.firstName;
     lastNameController.text=BlocProvider.of<ShowProfileCubit>(context).profileUserModel!.lastName;
     phoneNumberController.text=BlocProvider.of<ShowProfileCubit>(context).profileUserModel!.phoneNumber;
-    emailController.text=BlocProvider.of<ShowProfileCubit>(context).profileUserModel!.email;
     passWordController.text=BlocProvider.of<EditProfileCubit>(context).password;
   }
   bool passToggle=true;
@@ -31,7 +30,6 @@ class _ProfileEditFieldsWidgetState extends State< ProfileEditFieldsWidget>{
     BlocProvider.of<EditProfileCubit>(context).firstName=firstNameController.text;
     BlocProvider.of<EditProfileCubit>(context).lastName=lastNameController.text;
     BlocProvider.of<EditProfileCubit>(context).phoneNumber=phoneNumberController.text;
-    BlocProvider.of<EditProfileCubit>(context).email=emailController.text;
     BlocProvider.of<EditProfileCubit>(context).password=passWordController.text;
     return Stack(
       children: [
@@ -94,25 +92,6 @@ class _ProfileEditFieldsWidgetState extends State< ProfileEditFieldsWidget>{
         ),
         Positioned(
           top: 280, left: 20, right: 20,
-          child:CustomTextFormFieldWidget(
-            onChanged: (value){
-              BlocProvider.of<EditProfileCubit>(context).email=value;
-            },
-            obscureText: false,
-            controller: emailController,
-            hintText: LocaleKeys.Enter_Email.tr(),
-            icon: const Icon(Icons.email, color: Color(0xFF7DA4FF),),
-            validator: (value){
-              bool emailValid=RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&' *+ - /=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value!);
-              if(value.isEmpty){
-                return LocaleKeys.Enter_Email.tr();
-              } else if(!emailValid){
-                return LocaleKeys.Enter_Valid_Email.tr();
-              }},
-          ),
-        ),
-        Positioned(
-          top: 360, left: 20, right: 20,
           child:  CustomTextFormFieldWidget(
             onChanged: (value){
               BlocProvider.of<EditProfileCubit>(context).password=value;
@@ -138,7 +117,7 @@ class _ProfileEditFieldsWidgetState extends State< ProfileEditFieldsWidget>{
           ),
         ),
         Positioned(
-          top:440, left: 30, right: 30,
+          top:380, left: 30, right: 30,
           child:ProfileEditButtonWidget(
           ),
         ),

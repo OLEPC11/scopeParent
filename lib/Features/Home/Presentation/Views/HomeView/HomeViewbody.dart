@@ -10,51 +10,31 @@ class  HomeViewBody extends StatelessWidget {
     return Scaffold(
       drawer: SettingView(),
       appBar: AppBar(
-        backgroundColor:const Color(0xFF3B3D6D) ,
+        backgroundColor: const Color(0xFFAC8FCF),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(top: 5,right: 10,bottom: 5,left: 10),
+            child: Container(
+              width: 60,
+              height: 80,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: const DecorationImage(
+                    image: AssetImage("assets/images/Logo.png"),
+                    fit: BoxFit.cover
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       backgroundColor: Colors.white,
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width:MediaQuery.of(context).size.width ,
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.only(top:0,right: 15,bottom: 10,left: 15),
-              width: MediaQuery.of(context).size.width,
-              height: 135,
-              decoration: const BoxDecoration(
-                color:Color(0xFF3B3D6D) ,
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(70),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextWidget(
-                    text:LocaleKeys.Welcome_To_Our_Application.tr(),
-                    color:const Color(0xFF7DA4FF),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Outfit",
-                  ),
-                  Container(
-                    width: 70,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      image: const DecorationImage(
-                          image: AssetImage("assets/images/Logo.png"),
-                          fit: BoxFit.cover
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
+            const SizedBox(height: 15,),
             HomeItemWidget(),
           ],
         ),

@@ -22,7 +22,7 @@ class ShowAllChildServices {
 
   http.StreamedResponse response=await request.send();
 
-  if(response.statusCode==200){
+  if(response.statusCode==200||response.statusCode == 201){
     String data = await response.stream.bytesToString();
     Map<String,dynamic> dataResponse=jsonDecode(data);
     List<dynamic>data1=dataResponse["students"];

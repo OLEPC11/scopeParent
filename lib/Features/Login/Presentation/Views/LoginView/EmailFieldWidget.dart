@@ -9,26 +9,29 @@ class  EmailFieldWidget extends StatefulWidget {
   @override
   State<EmailFieldWidget > createState()=>_EmailFieldWidgetState();
 }
-
 class _EmailFieldWidgetState extends State<EmailFieldWidget>{
-  TextEditingController emailController=TextEditingController();
+  TextEditingController phoneNumberController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return  CustomTextFormFieldWidget(
       onChanged: (value){
-        BlocProvider.of<LoginCubit>(context).email=value;
+        BlocProvider.of<LoginCubit>(context).phoneNumber=value;
       },
       obscureText: false,
-      controller: emailController,
-      hintText: LocaleKeys.Enter_Email.tr(),
-      icon: const Icon(Icons.email, color: Color(0xFF7DA4FF),),
+      controller: phoneNumberController,
+      type: TextInputType.number,
+      hintText:LocaleKeys.Enter_Phone_Number.tr(),
+      icon: const Icon(
+        Icons.phone,
+        color: Color(0xFF7DA4FF),
+        size: 20,
+      ),
       validator: (value){
-        bool emailValid=RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&' *+ - /=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value!);
-        BlocProvider.of<LoginCubit>(context).email=emailController.text;
-        if(value.isEmpty){
-          return LocaleKeys.Enter_Email.tr();
-        } else if(!emailValid){
-          return LocaleKeys.Enter_Valid_Email.tr();
+        if(value!.isEmpty){
+          return(LocaleKeys.Enter_Phone_Number.tr());
+        }
+        else if(phoneNumberController.text.length<6){
+          return LocaleKeys.Phone_Number_Length_Should_equal_10_Numbers.tr();
         }},
     );
   }

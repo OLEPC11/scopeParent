@@ -36,7 +36,13 @@ class AppointmentItemWidget extends StatelessWidget {
                 const CircleAvatar(
                   backgroundImage: AssetImage("assets/images/Logo.png"),
                 ),
+                const SizedBox(
+                  width: 10,
+                ),
                 const Icon(Icons.calendar_today),
+                const SizedBox(
+                  width: 5,
+                ),
                 TextWidget(
                   text: date,
                   color:const Color(0xFF7DA4FF),
@@ -50,12 +56,12 @@ class AppointmentItemWidget extends StatelessWidget {
                 const Icon(Icons.timer),
                 Expanded(
                   child: TextWidget(
-                  text: time,
-                  color:const Color(0xFF7DA4FF),
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Outfit",
-                ),
+                    text: time,
+                    color:const Color(0xFF7DA4FF),
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Outfit",
+                  ),
                 ),
               ],
             ),

@@ -22,7 +22,7 @@ class ShowRegistrationRequestStateServices {
 
     http.StreamedResponse response=await request.send();
 
-    if(response.statusCode==200){
+    if(response.statusCode==200||response.statusCode == 201){
       String data = await response.stream.bytesToString();
       List<dynamic> dataResponse=jsonDecode(data);
       List<RegistrationRequestStateModel> registrationRequestStateModelList=[];

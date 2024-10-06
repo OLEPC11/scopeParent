@@ -8,6 +8,10 @@ import 'package:scope_parent/Features/Attendance/Cubit/ShowAttendanceCubit.dart'
 import 'package:scope_parent/Features/ChildDetails/Cubit/ShowAllChildCubit/ShowAllChildCubit.dart';
 import 'package:scope_parent/Features/ChildEvaluations/Cubit/Month/ShowEvaluationsMonthCubit.dart';
 import 'package:scope_parent/Features/Home/Cubit/RegistrationRequestStateCubit/ShowRegistrationRequestStateCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/AddNoteCubit/AddNoteCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/DeleteNoteCubit/DeleteNoteCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/ShowResponseCubit/ShowResponseCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/UpdateNoteCubit/UpdateNoteCubit.dart';
 import 'package:scope_parent/Features/Invoices/Cubit/ShowInvoicesCubit.dart';
 import 'package:scope_parent/Features/Login/Cubit/LoginCubit.dart';
 import 'package:scope_parent/Features/Login/Presentation/Views/LoginView/EmailFieldWidget.dart';
@@ -40,7 +44,6 @@ class LoginViewBody extends StatelessWidget {
           print(BlocProvider.of<LoginCubit>(context).loginUserModel!.firstName);
           print(BlocProvider.of<LoginCubit>(context).loginUserModel!.lastName);
           print(BlocProvider.of<LoginCubit>(context).loginUserModel!.phoneNumber);
-          print(BlocProvider.of<LoginCubit>(context).loginUserModel!.email);
           print(BlocProvider.of<LoginCubit>(context).loginUserModel!.userId);
           print(BlocProvider.of<LoginCubit>(context).loginUserModel!.roleId);
           Navigator.push(context, MaterialPageRoute(
@@ -61,6 +64,10 @@ class LoginViewBody extends StatelessWidget {
           BlocProvider.of<ShowEvaluationsMonthCubit>(context).accessToken=BlocProvider.of<LoginCubit>(context).loginUserModel!.accessToken;
           BlocProvider.of<ShowAppointmentsStateCubit>(context).accessToken=BlocProvider.of<LoginCubit>(context).loginUserModel!.accessToken;
           BlocProvider.of<ShowRegistrationRequestStateCubit>(context).accessToken=BlocProvider.of<LoginCubit>(context).loginUserModel!.accessToken;
+          BlocProvider.of<AddNoteCubit>(context).accessToken=BlocProvider.of<LoginCubit>(context).loginUserModel!.accessToken;
+          BlocProvider.of<ShowResponseCubit>(context).accessToken=BlocProvider.of<LoginCubit>(context).loginUserModel!.accessToken;
+          BlocProvider.of<UpdateNoteCubit>(context).accessToken=BlocProvider.of<LoginCubit>(context).loginUserModel!.accessToken;
+          BlocProvider.of<DeleteNoteCubit>(context).accessToken=BlocProvider.of<LoginCubit>(context).loginUserModel!.accessToken;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Login Successfully"),

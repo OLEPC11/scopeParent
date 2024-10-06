@@ -7,6 +7,7 @@ class EvaluationsMonthModel {
   List<dynamic> date;
   List<dynamic> noteTeachers;
   List<dynamic> noteAdmins;
+  List<dynamic> weeklyEvaluation;
   dynamic childImageName;
   dynamic childImagePath;
 
@@ -19,15 +20,18 @@ class EvaluationsMonthModel {
     required this.date,
     required this.noteTeachers,
     required this.noteAdmins,
+    required this.weeklyEvaluation,
     required this.childImageName,
     required this.childImagePath,
   });
 
   factory EvaluationsMonthModel.fromJson(dynamic jsonData) {
     var evaluationData = jsonData["evaluations"] as List;
+    var evaluationDataWeekly = jsonData["evaluation_students"] as List;
     List<dynamic> noteTeachers = [];
     List<dynamic> noteAdmins = [];
     List<dynamic> dates = [];
+    List<dynamic> weeklyEvaluationStudent = [];
     List<List<dynamic>> evaluationList = [];
     List<List<dynamic>> subjectNameList = [];
 
@@ -48,6 +52,9 @@ class EvaluationsMonthModel {
       subjectNameList.add(tempSubjectName);
     }
 
+    for (var weeklyEvaluation in evaluationDataWeekly) {
+      weeklyEvaluationStudent.add(weeklyEvaluation["Weekly_Evaluation"]);
+    }
     return EvaluationsMonthModel(
       childName: jsonData["student_name"],
       childCategory: jsonData["class_name"],
@@ -57,6 +64,7 @@ class EvaluationsMonthModel {
       noteTeachers: noteTeachers,
       noteAdmins: noteAdmins,
       date: dates,
+      weeklyEvaluation: weeklyEvaluationStudent,
       childImageName: jsonData["images"][0]["name"],
       childImagePath: jsonData["images"][0]["path"],
     );

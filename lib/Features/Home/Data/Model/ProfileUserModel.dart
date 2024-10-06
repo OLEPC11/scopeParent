@@ -3,7 +3,6 @@ class ProfileUserModel{
   dynamic firstName;
   dynamic lastName;
   dynamic phoneNumber;
-  dynamic email;
   dynamic userId;
   dynamic roleId;
   dynamic message;
@@ -12,7 +11,6 @@ class ProfileUserModel{
     required this.firstName,
     required this.lastName,
     required this.phoneNumber,
-    required this.email,
     required this.userId,
     required this.roleId,
     required this.message,
@@ -23,7 +21,6 @@ class ProfileUserModel{
       firstName: jsonData["data"]["first_name"],
       lastName: jsonData["data"]["last_name"],
       phoneNumber:jsonData["data"]["phone"],
-      email: jsonData["data"]["email"],
       userId:jsonData["data"]["id"],
       roleId:jsonData["data"]["role_id"] ,
       message:["message"],

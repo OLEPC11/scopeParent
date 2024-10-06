@@ -146,5 +146,17 @@ abstract class  LocaleKeys {
   static const Show_Homework = 'Show_Homework';
   static const Edit_Your_Profile = 'Edit_Your_Profile';
   static const Logout = 'Logout';
+  static const Show_Registration_Request_State = 'Show_Registration_Request_State';
+  static const Student_Evaluations_Archive = 'Student_Evaluations_Archive';
+  static const evaluation = 'evaluation';
+  static const subject = 'subject';
+  static const Enter_Month = 'Enter_Month';
+  static const Enter_year = 'Enter_year';
+  static const Paid_Invoices = 'Paid_Invoices';
+  static const Phone_Number_Length_Should_equal_10_Numbers = 'Phone_Number_Length_Should_equal_10_Numbers';
+  static const Total_Evaluation = 'Total_Evaluation';
+  static const Show_Attendance_Month = 'Show_Attendance_Month';
+  static const Show_Attendance_Day = 'Show_Attendance_Day';
+  static const Show_Evaluations = 'Show_Evaluations';
 
 }

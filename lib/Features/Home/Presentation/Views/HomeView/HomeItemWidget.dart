@@ -7,12 +7,12 @@ import 'package:scope_parent/Features/Appointment/Cubit/ShowAppointmentCubit/Sho
 import 'package:scope_parent/Features/Appointment/Presentation/DisplayAppointmentView.dart';
 import 'package:scope_parent/Features/ChildDetails/Cubit/ShowAllChildCubit/ShowAllChildCubit.dart';
 import 'package:scope_parent/Features/ChildDetails/Presentation/DisplayChildView.dart';
-import 'package:scope_parent/Features/ChildEvaluations/Presentation/InfoForDisplayChildEvaluationsView.dart';
-import 'package:scope_parent/Features/HomeWork/Presentation/InfoForDisplayChildHomeworkView.dart';
+import 'package:scope_parent/Features/ChildEvaluations/Presentation/DisplayChildrenEvaluationsView.dart';
 import 'package:scope_parent/Features/Invoices/Presentation/DisplayChildrenView.dart';
 import '../../../../../Core/Widgets/TextWidget.dart';
 import '../../../../../translations/locale_keys.g.dart';
-import '../../../../Attendance/Presentation/InfoForDisplayChildAttendanceView.dart';
+import '../../../../Attendance/Presentation/DisplayChildrenAttendanceView.dart';
+import '../../../../Homework/Presentation/DisplayChildHomeworkView.dart';
 import '../../../../RegistrationRequest/Presentation/AddRegistrationRequestView.dart';
 class  HomeItemWidget extends StatelessWidget {
   List cateNames=[
@@ -92,52 +92,270 @@ class  HomeItemWidget extends StatelessWidget {
                   );
                 }
                 if(index==5){
+                  BlocProvider.of<ShowAllChildCubit>(context).showAllChildServices(
+                    accessToken: BlocProvider.of<ShowAllChildCubit>(context).accessToken,
+                  );
                   Navigator.push(context, MaterialPageRoute(
                       builder:(BuildContext context){
-                        return InfoForDisplayChildEvaluationsView();
+                        return DisplayChildrenEvaluationsView();
                       }),
                   );
                 }
                 if(index==6){
+                  BlocProvider.of<ShowAllChildCubit>(context).showAllChildServices(
+                    accessToken: BlocProvider.of<ShowAllChildCubit>(context).accessToken,
+                  );
                   Navigator.push(context, MaterialPageRoute(
                       builder:(BuildContext context){
-                        return InfoForDisplayChildAttendanceView();
+                        return DisplayChildrenAttendanceView();
                       }),
                   );
                 }
                 if(index==7){
+                  BlocProvider.of<ShowAllChildCubit>(context).showAllChildServices(
+                    accessToken: BlocProvider.of<ShowAllChildCubit>(context).accessToken,
+                  );
                   Navigator.push(context, MaterialPageRoute(
                       builder:(BuildContext context){
-                        return InfoForDisplayChildHomeworkView();
+                        return DisplayChildHomeworkView();
                       }),
                   );
                 }
               },
-              child: Column(
-                children: [
-                  Container(
-                    height: 140,
-                    width: 120,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color:const Color(0xFFD4E7FE),
-                      //shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage(cateImages[index]),
-                        fit: BoxFit.cover,
-                      ),
+              child:SizedBox(
+                height: 180,width: 140,
+                child:
+                Card(
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(
+                      color: Color(0xFFAC8FCF),
                     ),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  TextWidget(
-                    text:cateNames[index],
-                    color:const Color(0xFF7DA4FF),
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Outfit",
+                  margin: const EdgeInsets.only(bottom: 10,left: 20,right: 20,top:20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 2,),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top:10,
+                          left: 30,
+                          right: 30,
+                        ),
+                        child: Container(
+                          height: 90,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                              image: AssetImage(cateImages[index]),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                      index==0?
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          bottom: 10,
+                          left:  10,
+                          right: 10,),
+                        child: TextWidget(
+                          text:cateNames[index],
+                          color:const Color(0xFF7DA4FF),
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Outfit",
+                        ),
+                      ):index==3?
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          bottom: 10,
+                          left: 40,
+                          right: 25,),
+                        child: TextWidget(
+                          text:cateNames[index],
+                          color:const Color(0xFF7DA4FF),
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Outfit",
+                        ),
+                      ):
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          bottom: 10,
+                          left: 45,
+                          right: 25,),
+                        child: TextWidget(
+                          text:cateNames[index],
+                          color:const Color(0xFF7DA4FF),
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Outfit",
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             );
+            // ):
+            // GestureDetector(
+            //   onTap: (){
+            //     if(index==0){
+            //       Navigator.push(context, MaterialPageRoute(
+            //           builder:(BuildContext context){
+            //             return AddRegistrationRequestView();
+            //           }),
+            //       );
+            //     }
+            //     if(index==1){
+            //       BlocProvider.of<ShowAppointmentCubit>(context).showAppointmentServices();
+            //       Navigator.push(context, MaterialPageRoute(
+            //           builder:(BuildContext context){
+            //             return DisplayAppointmentView();
+            //           }),
+            //       );
+            //     }
+            //     if(index==2){
+            //       BlocProvider.of<ShowAllChildCubit>(context).showAllChildServices(
+            //         accessToken: BlocProvider.of<ShowAllChildCubit>(context).accessToken,
+            //       );
+            //       Navigator.push(context, MaterialPageRoute(
+            //           builder:(BuildContext context){
+            //             return DisplayChildrenView();
+            //           }),
+            //       );
+            //     }
+            //     if(index==3){
+            //       BlocProvider.of<ShowAllChildCubit>(context).showAllChildServices(
+            //         accessToken: BlocProvider.of<ShowAllChildCubit>(context).accessToken,
+            //       );
+            //       Navigator.push(context, MaterialPageRoute(
+            //           builder:(BuildContext context){
+            //             return DisplayChildView();
+            //           }),
+            //       );
+            //     }
+            //     if(index==4){
+            //       BlocProvider.of<ShowActivitiesCubit>(context).showActivitiesServices();
+            //       Navigator.push(context, MaterialPageRoute(
+            //           builder:(BuildContext context){
+            //             return DisplayActivitiesView();
+            //           }),
+            //       );
+            //     }
+            //     if(index==5){
+            //       BlocProvider.of<ShowAllChildCubit>(context).showAllChildServices(
+            //         accessToken: BlocProvider.of<ShowAllChildCubit>(context).accessToken,
+            //       );
+            //       Navigator.push(context, MaterialPageRoute(
+            //           builder:(BuildContext context){
+            //             return DisplayChildrenEvaluationsView();
+            //           }),
+            //       );
+            //     }
+            //     if(index==6){
+            //       BlocProvider.of<ShowAllChildCubit>(context).showAllChildServices(
+            //         accessToken: BlocProvider.of<ShowAllChildCubit>(context).accessToken,
+            //       );
+            //       Navigator.push(context, MaterialPageRoute(
+            //           builder:(BuildContext context){
+            //             return DisplayChildrenAttendanceView();
+            //           }),
+            //       );
+            //     }
+            //     if(index==7){
+            //       BlocProvider.of<ShowAllChildCubit>(context).showAllChildServices(
+            //         accessToken: BlocProvider.of<ShowAllChildCubit>(context).accessToken,
+            //       );
+            //       Navigator.push(context, MaterialPageRoute(
+            //           builder:(BuildContext context){
+            //             return DisplayChildHomeworkView();
+            //           }),
+            //       );
+            //     }
+            //   },
+            //   child:SizedBox(
+            //     height: 170,width: 140,
+            //     child:
+            //     Card(
+            //       shape: RoundedRectangleBorder(
+            //         side: const BorderSide(
+            //           color: Color(0xFFAC8FCF),
+            //         ),
+            //         borderRadius: BorderRadius.circular(20),
+            //       ),
+            //       margin: const EdgeInsets.only(bottom: 20,left: 20,right: 20,top: 30),
+            //       child: Stack(
+            //         children: [
+            //           Positioned(
+            //             top:10,
+            //             left: 30,
+            //             right: 30,
+            //             child: Container(
+            //               height: 90,
+            //               width: 90,
+            //               decoration: BoxDecoration(
+            //                 borderRadius: BorderRadius.circular(20),
+            //                 image: DecorationImage(
+            //                   image: AssetImage(cateImages[index]),
+            //                   fit: BoxFit.cover,
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //           index==0?Positioned(
+            //             bottom: 10,
+            //             left: 40,
+            //             right: 40,
+            //             child: TextWidget(
+            //               text:cateNames[index],
+            //               color:const Color(0xFF7DA4FF),
+            //               fontSize: 13,
+            //               fontWeight: FontWeight.bold,
+            //               fontFamily: "Outfit",
+            //             ),
+            //           ):index==3?Positioned(
+            //             bottom: 10,
+            //             left: 40,
+            //             right: 40,
+            //             child: TextWidget(
+            //               text:cateNames[index],
+            //               color:const Color(0xFF7DA4FF),
+            //               fontSize: 13,
+            //               fontWeight: FontWeight.bold,
+            //               fontFamily: "Outfit",
+            //             ),
+            //           ):index==7?Positioned(
+            //             bottom: 10,
+            //             left: 40,
+            //             right: 40,
+            //             child: TextWidget(
+            //               text:cateNames[index],
+            //               color:const Color(0xFF7DA4FF),
+            //               fontSize: 13,
+            //               fontWeight: FontWeight.bold,
+            //               fontFamily: "Outfit",
+            //             ),
+            //           ):Positioned(
+            //             bottom: 10,
+            //             left: 60,
+            //             right: 60,
+            //             child: TextWidget(
+            //               text:cateNames[index],
+            //               color:const Color(0xFF7DA4FF),
+            //               fontSize: 13,
+            //               fontWeight: FontWeight.bold,
+            //               fontFamily: "Outfit",
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // );
           },
         ),
       ),

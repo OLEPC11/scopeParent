@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class LoginUserServices {
   String baseUrl="http://$ipServer:8000";
   Future <LoginUserModel> loginServices({
-    required dynamic email,
+    required dynamic phoneNumber,
     required dynamic password,
   })async{
     var request = http.MultipartRequest(
@@ -15,7 +15,7 @@ class LoginUserServices {
       Uri.parse("$baseUrl/api/login"),
     );
     request.fields.addAll({
-      "email":email,
+      "phone":phoneNumber,
       "password":password,
     });
     var  headers={
@@ -24,7 +24,7 @@ class LoginUserServices {
     request.headers.addAll(headers);
 
     http.StreamedResponse response=await request.send();
-    if(response.statusCode==200){
+    if(response.statusCode==200||response.statusCode == 201){
       String data = await response.stream.bytesToString();
       Map<String,dynamic> dataResponse=jsonDecode(data);
       LoginUserModel loginUserModel=LoginUserModel.fromJson(dataResponse);

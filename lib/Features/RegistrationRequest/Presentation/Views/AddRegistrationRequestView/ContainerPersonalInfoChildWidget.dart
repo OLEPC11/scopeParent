@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../Core/Widgets/TextWidget.dart';
 import '../../../../../Core/Widgets/CustomWidgets/ContainerWidget.dart';
 import '../../../../../translations/locale_keys.g.dart';
+import '../../../../Home/Cubit/LanguageCubit/LanguageCubit.dart';
 import '../../../Cubit/AddRegistrationRequestCubit.dart';
 import 'AnswerTextFormFieldWidget.dart';
 import 'ContanierRadioWidget.dart';
@@ -31,14 +32,14 @@ class _ContainerPersonalInfoChildWidgetState extends State<ContainerPersonalInfo
 
   @override
   Widget build(BuildContext context) {
-    // childFavoriteNameController.text= BlocProvider.of<AddRegistrationRequestCubit>(context).preferredName ?? '';
-    // childFavoriteColorController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).favoriteColor ?? '';
-    // childFavoriteGameController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).favoriteGame ?? '';
-    // childFavoriteMealController.text= BlocProvider.of<AddRegistrationRequestCubit>(context).favoriteMeal ?? '';
-    // childBedtimeDuringTheDayController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).dayTimeBedTime ?? '';
-    // childBedtimeAtNightController.text= BlocProvider.of<AddRegistrationRequestCubit>(context).nightSleepTime ?? '';
-    // radioValueRelationshipStranger = BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithStrangers=="Social" ?1:BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithStrangers=="Extreme Fear" ?2 :BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithStrangers=="Keep Away" ?3:0;
-    // radioValueRelationshipChildren = BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithChildren=="Play With Them"?1: BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithChildren=="Stay Away From Them"?2:BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithChildren=="Integrate With Them"?3:0;
+    childFavoriteNameController.text= BlocProvider.of<AddRegistrationRequestCubit>(context).preferredName ?? '';
+    childFavoriteColorController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).favoriteColor ?? '';
+    childFavoriteGameController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).favoriteGame ?? '';
+    childFavoriteMealController.text= BlocProvider.of<AddRegistrationRequestCubit>(context).favoriteMeal ?? '';
+    childBedtimeDuringTheDayController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).dayTimeBedTime ?? '';
+    childBedtimeAtNightController.text= BlocProvider.of<AddRegistrationRequestCubit>(context).nightSleepTime ?? '';
+    radioValueRelationshipStranger = BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithStrangers=="Social" ?1:BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithStrangers=="Extreme Fear" ?2 :BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithStrangers=="Keep Away" ?3:0;
+    radioValueRelationshipChildren = BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithChildren=="Play With Them"?1: BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithChildren=="Stay Away From Them"?2:BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithChildren=="Integrate With Them"?3:0;
     return ContainerWidget(
       padding: const EdgeInsets.only(top:50,left: 20,right: 20),
       height:950,
@@ -213,8 +214,23 @@ class _ContainerPersonalInfoChildWidgetState extends State<ContainerPersonalInfo
               ),
             ),
           ),
-          Positioned(
+          BlocProvider.of<LanguageCubit>(context).typeLanguage=='en'?Positioned(
             top: 713, left: 70, right: 230,
+            child:Row(
+              children: [
+                Expanded(
+                  child: TextWidget(
+                    text: LocaleKeys.Social.tr(),
+                    color:const Color(0xFF7DA4FF),
+                    fontSize:15,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Outfit",
+                  ),
+                ),
+              ],
+            ),
+          ):Positioned(
+            top: 713, left: 70, right: 245,
             child:Row(
               children: [
                 Expanded(
@@ -245,7 +261,7 @@ class _ContainerPersonalInfoChildWidgetState extends State<ContainerPersonalInfo
             ),
           ),
           Positioned(
-            top: 743, left: 70,
+            top: 740, left: 70,
             child: TextWidget(
               text:LocaleKeys.Extreme_Fear.tr(),
               color:const Color(0xFF7DA4FF),
@@ -311,8 +327,23 @@ class _ContainerPersonalInfoChildWidgetState extends State<ContainerPersonalInfo
               ),
             ),
           ),
-          Positioned(
+          BlocProvider.of<LanguageCubit>(context).typeLanguage=='en'?Positioned(
             top: 848, left: 70, right: 180,
+            child:Row(
+              children: [
+                Expanded(
+                  child: TextWidget(
+                    text: LocaleKeys.Play_With_Them.tr(),
+                    color:const Color(0xFF7DA4FF),
+                    fontSize:15,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Outfit",
+                  ),
+                ),
+              ],
+            ),
+          ):Positioned(
+            top: 848, left: 70, right: 230,
             child:Row(
               children: [
                 Expanded(

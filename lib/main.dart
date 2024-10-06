@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scope_parent/Features/Activities/Cubit/ShowActivitiesCubit.dart';
@@ -7,8 +8,13 @@ import 'package:scope_parent/Features/Attendance/Cubit/ShowAttendanceCubit.dart'
 import 'package:scope_parent/Features/ChildDetails/Cubit/ShowAllChildCubit/ShowAllChildCubit.dart';
 import 'package:scope_parent/Features/ChildDetails/Cubit/ShowChildDetailsCubit/ShowChildDetailsCubit.dart';
 import 'package:scope_parent/Features/ChildEvaluations/Cubit/Month/ShowEvaluationsMonthCubit.dart';
+import 'package:scope_parent/Features/Home/Cubit/LanguageCubit/LanguageCubit.dart';
 import 'package:scope_parent/Features/Home/Cubit/RegistrationRequestStateCubit/ShowRegistrationRequestStateCubit.dart';
-import 'package:scope_parent/Features/Homework/Cubit/HomeworkCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/AddNoteCubit/AddNoteCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/DeleteNoteCubit/DeleteNoteCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/HomeworkCubit/HomeworkCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/ShowResponseCubit/ShowResponseCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/UpdateNoteCubit/UpdateNoteCubit.dart';
 import 'package:scope_parent/Features/Invoices/Cubit/ShowInvoicesCubit.dart';
 import 'package:scope_parent/Features/Login/Cubit/LoginCubit.dart';
 import 'package:scope_parent/Features/Login/Presentation/LoginView.dart';
@@ -32,7 +38,9 @@ Future<void> main() async{
         path: 'assets/translations', // <-- change the path of the translation files
         fallbackLocale:const Locale('en'),
         //assetLoader: CodegenLoader(),
-        child: const MyApp()
+        child:DevicePreview(
+            enabled: true,
+            builder: (context) => const MyApp())
     ),
   );
 }
@@ -97,6 +105,21 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) {
           return ShowRegistrationRequestStateCubit();
         }),
+        BlocProvider(create: (context) {
+          return LanguageCubit();
+        }),
+        BlocProvider(create: (context) {
+          return AddNoteCubit();
+        }),
+        BlocProvider(create: (context) {
+          return ShowResponseCubit();
+        }),
+        BlocProvider(create: (context) {
+          return UpdateNoteCubit();
+        }),
+        BlocProvider(create: (context) {
+          return DeleteNoteCubit();
+        }),
       ],
       child: MaterialApp(
         localizationsDelegates: context.localizationDelegates,
@@ -110,4 +133,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-String ipServer="192.168.43.38";
+String ipServer="192.168.239.55";

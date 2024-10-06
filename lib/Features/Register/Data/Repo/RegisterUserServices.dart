@@ -10,7 +10,6 @@ Future <RegisterUserModel> registerServices({
   required dynamic firstName,
   required dynamic lastName,
   required dynamic phoneNumber,
-  required dynamic email,
   required dynamic password,
 })async{
   var request = http.MultipartRequest(
@@ -21,7 +20,6 @@ Future <RegisterUserModel> registerServices({
     "first_name":firstName,
     "last_name":lastName,
     "phone":phoneNumber,
-    "email":email,
     "password":password,
     "role_id":"4",
   });
@@ -35,7 +33,7 @@ Future <RegisterUserModel> registerServices({
 
   http.StreamedResponse response=await request.send();
 
-  if(response.statusCode==200){
+  if(response.statusCode==200||response.statusCode == 201){
     String data = await response.stream.bytesToString();
     Map<String,dynamic> dataResponse=jsonDecode(data);
     RegisterUserModel registerUserModel=RegisterUserModel.fromJson(dataResponse);

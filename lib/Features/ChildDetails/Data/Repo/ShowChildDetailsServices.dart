@@ -20,7 +20,7 @@ class ShowChildDetailsServices {
 
   http.StreamedResponse response=await request.send();
 
-  if(response.statusCode==200){
+  if(response.statusCode==200||response.statusCode == 201){
     String data = await response.stream.bytesToString();
     Map<String,dynamic> dataResponse=jsonDecode(data);
     ChildDetailsModel childDetailsModel=ChildDetailsModel.fromJson(dataResponse);

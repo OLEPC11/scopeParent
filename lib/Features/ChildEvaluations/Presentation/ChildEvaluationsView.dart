@@ -3,15 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../../../../Core/Widgets/TextWidget.dart';
 import '../../../translations/locale_keys.g.dart';
-import 'Views/ChildEvaluationsView/ChildEvaluationsViewBody.dart';
+import 'Views/ChildEvaluationsView1/ChildEvaluationsViewBody.dart';
 
-class ChildEvaluationsView extends StatefulWidget {
-
-  @override
-  State<ChildEvaluationsView>createState()=>_ChildEvaluationsViewState();
-
-}
-class _ChildEvaluationsViewState extends State<ChildEvaluationsView>{
+class ChildEvaluationsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

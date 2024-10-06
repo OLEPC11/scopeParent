@@ -9,18 +9,12 @@ part 'ShowEvaluationsDayState.dart';
 class ShowEvaluationsDayCubit extends Cubit<ShowEvaluationsDayState> {
   ShowEvaluationsDayCubit() : super(ShowEvaluationsDayInitial());
   dynamic nameChild;
-  dynamic day;
-  dynamic month;
-  dynamic year;
   dynamic categoryClass;
   dynamic accessToken;
   dynamic type;
   EvaluationsDayModel? evaluationsDayModel;
   void showShowEvaluationsServices ({
     required dynamic nameChild,
-    required dynamic day,
-    required dynamic month,
-    required dynamic year,
     required dynamic categoryClass,
     required dynamic accessToken,
   }) async{
@@ -29,9 +23,6 @@ class ShowEvaluationsDayCubit extends Cubit<ShowEvaluationsDayState> {
       evaluationsDayModel =await ShowEvaluationsDayServices().showEvaluationsDayServices(
         name: nameChild,
         category: categoryClass,
-        day: day,
-        month: month,
-        year: year,
         accessToken: accessToken,
       );
       emit(ShowEvaluationsDaySuccess(evaluationsDayModel: evaluationsDayModel!));

@@ -7,18 +7,10 @@ import '../Model/HomeworkModel.dart';
 class ShowHomeworkServices {
   String baseUrl="http://$ipServer:8000";
   Future <List<HomeworkModel>> showHomeworkServices({
-    required dynamic day,
-    required dynamic month,
-    required dynamic year,
     required dynamic categoryId,
   })async{
     var request = http.Request('GET',
-        Uri.parse('$baseUrl/api/get_homework/$categoryId'));
-    request.body = json.encode({
-      "day": "$day",
-      "month":"$month",
-      "year": "$year"
-    });
+        Uri.parse('$baseUrl/api/get_homework_now/$categoryId'));
     var headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -26,7 +18,7 @@ class ShowHomeworkServices {
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
-    if(response.statusCode==200){
+    if(response.statusCode==200||response.statusCode == 201){
       String data = await response.stream.bytesToString();
       Map<String,dynamic> dataResponse=jsonDecode(data);
       List<dynamic>data1=dataResponse["data"];

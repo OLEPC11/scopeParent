@@ -20,7 +20,6 @@ class ProfileEditButtonWidget extends StatelessWidget{
           firstName: BlocProvider.of<EditProfileCubit>(context).firstName ,
           lastName: BlocProvider.of<EditProfileCubit>(context).lastName ,
           phoneNumber: BlocProvider.of<EditProfileCubit>(context).phoneNumber ,
-          email: BlocProvider.of<EditProfileCubit>(context).email ,
           password:BlocProvider.of<EditProfileCubit>(context).password,
           accessToken:  BlocProvider.of<EditProfileCubit>(context).accessToken,
         );

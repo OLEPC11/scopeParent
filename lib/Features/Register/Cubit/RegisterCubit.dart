@@ -9,7 +9,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   dynamic firstName;
   dynamic lastName;
   dynamic phoneNumber;
-  dynamic email;
   dynamic password;
   dynamic image;
   RegisterUserModel? registerUserModel;
@@ -19,7 +18,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     required dynamic firstName,
     required dynamic lastName,
     required dynamic phoneNumber,
-    required dynamic email,
     required dynamic password,
   }) async{
     emit(RegisterLoading());
@@ -29,7 +27,6 @@ class RegisterCubit extends Cubit<RegisterState> {
         firstName:firstName,
         lastName:lastName,
         phoneNumber:phoneNumber,
-        email:email,
         password:password,
       );
       emit(RegisterSuccess());

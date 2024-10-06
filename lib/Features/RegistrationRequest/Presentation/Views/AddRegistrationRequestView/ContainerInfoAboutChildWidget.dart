@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:scope_parent/Core/Widgets/CustomWidgets/CustomTextFormFieldWidget.dart';
+import 'package:scope_parent/Features/Home/Cubit/LanguageCubit/LanguageCubit.dart';
 import '../../../../../../Core/Widgets/TextWidget.dart';
 import '../../../../../Core/Widgets/CustomWidgets/ContainerWidget.dart';
 import '../../../../../translations/locale_keys.g.dart';
@@ -30,16 +31,16 @@ class _ContainerInfoAboutChildWidgetState extends State<ContainerInfoAboutChildW
 
   @override
   Widget build(BuildContext context) {
-    // childFullNameController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).name ?? '';
-    // dateOfBirthController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).dateBirth ?? '';
-    // placeOfBirthController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).placeBirth ?? '';
-    // numberOfBrothersController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).numberBrother ?? '';
-    // arrangingChildInFamilyController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).arrangementInFamily ?? '';
-    // radioValueGender = BlocProvider.of<AddRegistrationRequestCubit>(context).gender=="Male"?1:BlocProvider.of<AddRegistrationRequestCubit>(context).gender=="Female"?2:0;
-    // radioValueType = BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=="1"?1:BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=="2"?2: BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=="3"?3:0;
+    childFullNameController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).name ??'';
+    dateOfBirthController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).dateBirth ?? '';
+    placeOfBirthController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).placeBirth ?? '';
+    numberOfBrothersController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).numberBrother ?? '';
+    arrangingChildInFamilyController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).arrangementInFamily ?? '';
+    radioValueGender = BlocProvider.of<AddRegistrationRequestCubit>(context).gender=="Male"?1:BlocProvider.of<AddRegistrationRequestCubit>(context).gender=="Female"?2:0;
+    radioValueType = BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=="1"?4:BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=="2"?1: BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=="3"?2: BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=="4"?3:0;
     return ContainerWidget(
       padding: const EdgeInsets.only(top: 40,left: 20,right: 20),
-      height:700, width:220,
+      height:720, width:220,
       widget: Stack(
         children: [
           Positioned(
@@ -187,7 +188,6 @@ class _ContainerInfoAboutChildWidgetState extends State<ContainerInfoAboutChildW
           Positioned(
             top:485,
             left: 40,
-
             child: ContanierRadioWidget(
               child:  Radio(
                 value: 1,
@@ -201,8 +201,23 @@ class _ContainerInfoAboutChildWidgetState extends State<ContainerInfoAboutChildW
             ),
 
           ),
-          Positioned(
+          BlocProvider.of<LanguageCubit>(context).typeLanguage=='en'?Positioned(
             top: 480, left: 70, right: 260,
+            child:Row(
+              children: [
+                Expanded(
+                  child: TextWidget(
+                    text:LocaleKeys.Male.tr(),
+                    color:const Color(0xFF7DA4FF),
+                    fontSize:15,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Outfit",
+                  ),
+                ),
+              ],
+            ),
+          ):Positioned(
+            top: 480, left: 70, right: 275,
             child:Row(
               children: [
                 Expanded(
@@ -268,7 +283,7 @@ class _ContainerInfoAboutChildWidgetState extends State<ContainerInfoAboutChildW
                 onChanged: (value) {
                   setState(() {
                     radioValueType = value;
-                    kg = "1";
+                    kg = "2";
                     BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=kg;});},
               ),
             ),
@@ -299,7 +314,7 @@ class _ContainerInfoAboutChildWidgetState extends State<ContainerInfoAboutChildW
                 onChanged: (value) {
                   setState(() {
                     radioValueType = value;
-                    kg = "2";
+                    kg = "3";
                     BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=kg;});},
               ),
             ),
@@ -314,7 +329,6 @@ class _ContainerInfoAboutChildWidgetState extends State<ContainerInfoAboutChildW
               fontFamily: "Outfit",
             ),
           ),
-
           Positioned(
             left: 40, top: 655,
             child: ContanierRadioWidget(
@@ -324,7 +338,7 @@ class _ContainerInfoAboutChildWidgetState extends State<ContainerInfoAboutChildW
                 onChanged: (value) {
                   setState(() {
                     radioValueType = value;
-                    kg = "3";
+                    kg = "4";
                     BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=kg;});},
               ),
             ),
@@ -333,6 +347,30 @@ class _ContainerInfoAboutChildWidgetState extends State<ContainerInfoAboutChildW
             top: 650, left: 70,
             child: TextWidget(
               text: "Kg3",
+              color:const Color(0xFF7DA4FF),
+              fontSize:16,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Outfit",
+            ),
+          ),
+          Positioned(
+            left: 40, top: 680,
+            child: ContanierRadioWidget(
+              child: Radio(
+                value: 4,
+                groupValue: radioValueType,
+                onChanged: (value) {
+                  setState(() {
+                    radioValueType = value;
+                    kg = "1";
+                    BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=kg;});},
+              ),
+            ),
+          ),
+          Positioned(
+            top: 675, left: 70,
+            child: TextWidget(
+              text: "pKg",
               color:const Color(0xFF7DA4FF),
               fontSize:16,
               fontWeight: FontWeight.bold,

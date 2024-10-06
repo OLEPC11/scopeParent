@@ -28,7 +28,13 @@ class AppointmentStateItemwidget extends StatelessWidget {
                 const CircleAvatar(
                   backgroundImage: AssetImage("assets/images/Logo.png"),
                 ),
+                const SizedBox(
+                  width: 10,
+                ),
                 const Icon(Icons.calendar_today),
+                const SizedBox(
+                  width: 5,
+                ),
                 TextWidget(
                   text: appointmentsStateModel.day,
                   color:const Color(0xFF7DA4FF),

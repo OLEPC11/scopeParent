@@ -24,7 +24,6 @@ class RegisterButtonWidget extends StatelessWidget{
             firstName: BlocProvider.of<RegisterCubit>(context).firstName ,
             lastName: BlocProvider.of<RegisterCubit>(context).lastName ,
             phoneNumber: BlocProvider.of<RegisterCubit>(context).phoneNumber ,
-            email: BlocProvider.of<RegisterCubit>(context).email ,
             password: BlocProvider.of<RegisterCubit>(context).password ,
           );
           BlocProvider.of<EditProfileCubit>(context).password=BlocProvider.of<RegisterCubit>(context).password;

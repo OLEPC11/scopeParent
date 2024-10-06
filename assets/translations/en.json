@@ -143,5 +143,17 @@
   "You_Want_The_Attendance_For_Day_Or_Month": "3-You Want The Attendance For Day Or Month ?",
   "Show_Homework": "Show Homework",
   "Edit_Your_Profile": "Edit Your Profile",
-  "Logout": "Logout"
+  "Logout": "Logout",
+  "Show_Registration_Request_State": "Show Registration Request State",
+  "Student_Evaluations_Archive": "Student Evaluations Archive",
+  "subject": "subject :",
+  "evaluation": "evaluation :",
+  "Enter_Month": "Enter Month",
+  "Enter_year": "Enter year",
+  "Paid_Invoices": "Paid Invoices : ",
+  "Phone_Number_Length_Should_equal_10_Numbers": "Phone Number Length Should equal 10 Numbers",
+  "Total_Evaluation": "Total Evaluation :",
+  "Show_Attendance_Month": "Show Attendance Month",
+  "Show_Attendance_Day": "Show Attendance Day",
+  "Show_Evaluations": "Show Evaluations"
 }

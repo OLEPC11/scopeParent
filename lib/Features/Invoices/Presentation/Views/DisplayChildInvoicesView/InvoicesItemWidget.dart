@@ -1,7 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scope_parent/Core/Widgets/CustomWidgets/ContainerWidget.dart';
 import 'package:scope_parent/Core/Widgets/TextWidget.dart';
 import 'package:scope_parent/Features/Invoices/Data/Model/InvoicesModel.dart';
+
+import '../../../../../translations/locale_keys.g.dart';
+import '../../../../Home/Cubit/LanguageCubit/LanguageCubit.dart';
 
 class  InvoicesItemWidget extends StatelessWidget {
   InvoicesItemWidget({required this.invoicesModel});
@@ -19,7 +24,7 @@ class  InvoicesItemWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextWidget(
-                  text: "Paid Invoices :",
+                  text: LocaleKeys.Paid_Invoices.tr(),
                   color:const Color(0xFF7DA4FF),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -39,12 +44,24 @@ class  InvoicesItemWidget extends StatelessWidget {
               ],
             ),
           ),
-          const Positioned(
+          BlocProvider.of<LanguageCubit>(context).typeLanguage=='en'? const Positioned(
               top: 85, left: 10,
               child: Icon(Icons.calendar_today_outlined ,size: 20,color: Color(0xFFAC8FCF),)
+          ): const Positioned(
+              top: 85, right: 10,
+              child: Icon(Icons.calendar_today_outlined ,size: 20,color: Color(0xFFAC8FCF),)
           ),
-          Positioned(
-            top: 85, left: 70, right: 130,
+          BlocProvider.of<LanguageCubit>(context).typeLanguage=='en'? Positioned(
+            top: 85, left: 50,
+            child: TextWidget(
+              text:invoicesModel.invoiceDate,
+              color:const Color(0xFF7DA4FF),
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Outfit",
+            ),
+          ):Positioned(
+            top: 85, right: 50,
             child: TextWidget(
               text:invoicesModel.invoiceDate,
               color:const Color(0xFF7DA4FF),
@@ -53,13 +70,26 @@ class  InvoicesItemWidget extends StatelessWidget {
               fontFamily: "Outfit",
             ),
           ),
-          const Positioned(
+          BlocProvider.of<LanguageCubit>(context).typeLanguage=='en'? const Positioned(
               top: 122,
               left: 12,
               child: Icon(Icons.monetization_on ,size: 22,color: Color(0xFFAC8FCF),)
+          ): const Positioned(
+              top: 122,
+              right: 12,
+              child: Icon(Icons.monetization_on ,size: 22,color: Color(0xFFAC8FCF),)
           ),
-          Positioned(
-            top: 120, left: 70, right: 160,
+          BlocProvider.of<LanguageCubit>(context).typeLanguage=='en'?Positioned(
+            top: 120, left: 50,
+            child: TextWidget(
+              text: "${invoicesModel.invoiceAmount}",
+              color:const Color(0xFF7DA4FF),
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Outfit",
+            ),
+          ):Positioned(
+            top: 120, right: 50,
             child: TextWidget(
               text: "${invoicesModel.invoiceAmount}",
               color:const Color(0xFF7DA4FF),

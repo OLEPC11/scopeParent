@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:scope_parent/Features/ChildEvaluations/Data/Model/EvaluationsMonthModel.dart';
 import '../../../../main.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,9 +11,6 @@ class ShowEvaluationsDayServices {
     required dynamic accessToken,
     required dynamic name,
     required dynamic category,
-    required dynamic day,
-    required dynamic month,
-    required dynamic year,
   })async{
     var request = http.Request(
         'POST',
@@ -22,9 +18,6 @@ class ShowEvaluationsDayServices {
     request.body = json.encode({
       "student_name": name,
       "class_name": category,
-      "day":"$day",
-      "month":"$month",
-      "year":"$year",
     });
     var headers = {
       'Accept': 'application/json',
@@ -34,7 +27,7 @@ class ShowEvaluationsDayServices {
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
-    if(response.statusCode==200){
+    if(response.statusCode==200||response.statusCode == 201){
       String data = await response.stream.bytesToString();
       Map<String,dynamic> dataResponse=jsonDecode(data);
       EvaluationsDayModel evaluationsModel=EvaluationsDayModel.fromJson(dataResponse);

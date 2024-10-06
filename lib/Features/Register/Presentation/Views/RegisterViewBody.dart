@@ -6,6 +6,10 @@ import 'package:scope_parent/Features/Attendance/Cubit/ShowAttendanceCubit.dart'
 import 'package:scope_parent/Features/ChildDetails/Cubit/ShowAllChildCubit/ShowAllChildCubit.dart';
 import 'package:scope_parent/Features/ChildEvaluations/Cubit/Month/ShowEvaluationsMonthCubit.dart';
 import 'package:scope_parent/Features/Home/Cubit/RegistrationRequestStateCubit/ShowRegistrationRequestStateCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/AddNoteCubit/AddNoteCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/DeleteNoteCubit/DeleteNoteCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/ShowResponseCubit/ShowResponseCubit.dart';
+import 'package:scope_parent/Features/Homework/Cubit/UpdateNoteCubit/UpdateNoteCubit.dart';
 import 'package:scope_parent/Features/Invoices/Cubit/ShowInvoicesCubit.dart';
 import 'package:scope_parent/Features/Register/Cubit/RegisterCubit.dart';
 import 'package:scope_parent/Features/Register/Presentation/Views/RegisterAddImageWidget.dart';
@@ -35,7 +39,6 @@ class  RegisterViewBody extends StatelessWidget {
           print(BlocProvider.of<RegisterCubit>(context).registerUserModel!.firstName);
           print(BlocProvider.of<RegisterCubit>(context).registerUserModel!.lastName);
           print(BlocProvider.of<RegisterCubit>(context).registerUserModel!.phoneNumber);
-          print(BlocProvider.of<RegisterCubit>(context).registerUserModel!.email);
           print(BlocProvider.of<RegisterCubit>(context).registerUserModel!.userId);
           print(BlocProvider.of<RegisterCubit>(context).registerUserModel!.roleId);
           Navigator.push(context, MaterialPageRoute(
@@ -56,6 +59,10 @@ class  RegisterViewBody extends StatelessWidget {
           BlocProvider.of<ShowEvaluationsMonthCubit>(context).accessToken=BlocProvider.of<RegisterCubit>(context).registerUserModel!.accessToken;
           BlocProvider.of<ShowAppointmentsStateCubit>(context).accessToken=BlocProvider.of<RegisterCubit>(context).registerUserModel!.accessToken;
           BlocProvider.of<ShowRegistrationRequestStateCubit>(context).accessToken=BlocProvider.of<RegisterCubit>(context).registerUserModel!.accessToken;
+          BlocProvider.of<AddNoteCubit>(context).accessToken=BlocProvider.of<RegisterCubit>(context).registerUserModel!.accessToken;
+          BlocProvider.of<ShowResponseCubit>(context).accessToken=BlocProvider.of<RegisterCubit>(context).registerUserModel!.accessToken;
+          BlocProvider.of<UpdateNoteCubit>(context).accessToken=BlocProvider.of<RegisterCubit>(context).registerUserModel!.accessToken;
+          BlocProvider.of<DeleteNoteCubit>(context).accessToken=BlocProvider.of<RegisterCubit>(context).registerUserModel!.accessToken;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text("Add Account Successfully"),
@@ -82,7 +89,7 @@ class  RegisterViewBody extends StatelessWidget {
                 RegisterAddImageWidget(),
                 ContainerWidget(
                   padding: const EdgeInsets.only(top: 40,left: 20,right: 20),
-                  height:520,
+                  height:480,
                   width:220,
                   widget:RegisterFieldsWidget(formField: _formField),
                 ),

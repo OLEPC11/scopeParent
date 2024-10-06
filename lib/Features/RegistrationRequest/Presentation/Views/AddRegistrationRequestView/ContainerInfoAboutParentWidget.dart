@@ -19,12 +19,12 @@ class  ContainerInfoAboutParentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // fatherNameController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).nameFather ?? '';
-    // fatherQualificationController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).fatherAcademicQualification ?? '';
-    // fatherWorkController.text= BlocProvider.of<AddRegistrationRequestCubit>(context).fatherWork ?? '';
-    // motherNameController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).nameMother ?? '';
-    // motherQualificationController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).motherAcademicQualification ?? '';
-    // motherWorkController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).motherWork ?? '';
+    fatherNameController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).nameFather ?? '';
+    fatherQualificationController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).fatherAcademicQualification ?? '';
+    fatherWorkController.text= BlocProvider.of<AddRegistrationRequestCubit>(context).fatherWork ?? '';
+    motherNameController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).nameMother ?? '';
+    motherQualificationController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).motherAcademicQualification ?? '';
+    motherWorkController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).motherWork ?? '';
     return  ContainerWidget(
       padding: const EdgeInsets.only(top:50,left: 20,right: 20),
       height:550, width:220,

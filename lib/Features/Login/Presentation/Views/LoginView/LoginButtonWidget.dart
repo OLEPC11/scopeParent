@@ -18,10 +18,10 @@ class LoginButtonWidget extends StatelessWidget{
       text: LocaleKeys.Login.tr(),
       onTap: ()async{
         if(formField.currentState!.validate()){
-          print(BlocProvider.of<LoginCubit>(context).email);
+          print(BlocProvider.of<LoginCubit>(context).phoneNumber);
           print(BlocProvider.of<LoginCubit>(context).password);
           BlocProvider.of<LoginCubit>(context).loginServices(
-            email: BlocProvider.of<LoginCubit>(context).email ,
+            phoneNumber: BlocProvider.of<LoginCubit>(context).phoneNumber ,
             password: BlocProvider.of<LoginCubit>(context).password ,
           );
           BlocProvider.of<EditProfileCubit>(context).password=BlocProvider.of<LoginCubit>(context).password;

@@ -14,8 +14,8 @@ class  ContainerLatestInfoWidget extends StatelessWidget {
   TextEditingController personFilledController=TextEditingController();
   @override
   Widget build(BuildContext context) {
-    // personResponsibleReceivingController.text= BlocProvider.of<AddRegistrationRequestCubit>(context).personResponsibleForReceiving ?? '';
-    // personFilledController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).personWhoFillsTheForm ?? '';
+    personResponsibleReceivingController.text= BlocProvider.of<AddRegistrationRequestCubit>(context).personResponsibleForReceiving ?? '';
+    personFilledController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).personWhoFillsTheForm ?? '';
 
     return  ContainerWidget(
       padding: const EdgeInsets.only(top:50,left: 20,right: 20),

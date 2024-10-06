@@ -53,9 +53,9 @@ class _AddRegistrationRequestViewBodyState extends State<AddRegistrationRequestV
       imageChild=imageTemporary;
       BlocProvider.of<AddRegistrationRequestCubit>(context).imagesForChild.add(imageChild!);
       BlocProvider.of<AddRegistrationRequestCubit>(context).imagesForChild.add(imageChild!);
-   //   BlocProvider.of<AddRegistrationRequestCubit>(context).imagesForChild.add(imageChild!);
-      // BlocProvider.of<AddRegistrationRequestCubit>(context).imagesForChild.add(imageChild!);
-      // BlocProvider.of<AddRegistrationRequestCubit>(context).imagesForChild.add(imageChild!);
+      BlocProvider.of<AddRegistrationRequestCubit>(context).imagesForChild.add(imageChild!);
+      BlocProvider.of<AddRegistrationRequestCubit>(context).imagesForChild.add(imageChild!);
+      BlocProvider.of<AddRegistrationRequestCubit>(context).imagesForChild.add(imageChild!);
     });
   }
   getImageFatherID() async{
@@ -134,6 +134,41 @@ class _AddRegistrationRequestViewBodyState extends State<AddRegistrationRequestV
           isLoading=true;
         }
         else if(state is AddRegistrationRequestSuccess){
+          BlocProvider.of<AddRegistrationRequestCubit>(context).name =null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).dateBirth=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).placeBirth=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).numberBrother=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).arrangementInFamily=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).gender=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).categoryId=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).nameFather=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).fatherAcademicQualification=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).fatherWork =null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).nameMother =null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).motherAcademicQualification=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).motherWork=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).homeAddress=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).landlinePhone=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).fatherPhone=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).motherPhone=null;
+
+          BlocProvider.of<AddRegistrationRequestCubit>(context).chronicDiseases =null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).typeAllergies =null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).medicinesForChild =null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).dealingWithHeat=null;
+
+          BlocProvider.of<AddRegistrationRequestCubit>(context).preferredName =null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).favoriteColor=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).favoriteGame =null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).favoriteMeal =null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).dayTimeBedTime =null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).nightSleepTime=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithStrangers=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).relationshipWithChildren=null;
+
+          BlocProvider.of<AddRegistrationRequestCubit>(context).personResponsibleForReceiving=null;
+          BlocProvider.of<AddRegistrationRequestCubit>(context).personWhoFillsTheForm=null;
+
           print("Done");
           print(BlocProvider.of<AddRegistrationRequestCubit>(context).accessToken);
           print(state.registrationRequestModel.studentId);

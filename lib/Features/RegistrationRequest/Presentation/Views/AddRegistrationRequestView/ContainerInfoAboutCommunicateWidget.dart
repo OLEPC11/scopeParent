@@ -17,10 +17,10 @@ class  ContainerInfoAboutCommunicateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // homeAddressController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).homeAddress ?? '';
-    // homePhoneNumberController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).landlinePhone ?? '';
-    // fatherPhoneNumberController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).fatherPhone ?? '';
-    // motherPhoneNumberController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).motherPhone ?? '';
+    homeAddressController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).homeAddress ?? '';
+    homePhoneNumberController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).landlinePhone ?? '';
+    fatherPhoneNumberController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).fatherPhone ?? '';
+    motherPhoneNumberController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).motherPhone ?? '';
     return   ContainerWidget(
       padding: const EdgeInsets.only(top:50,left: 20,right: 20),
       height:400, width:220,

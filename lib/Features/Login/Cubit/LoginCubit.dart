@@ -8,18 +8,18 @@ part 'LoginState.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
-  dynamic email;
+  dynamic phoneNumber;
   dynamic password;
   LoginUserModel? loginUserModel;
 
   void loginServices ({
-    required dynamic email,
+    required dynamic phoneNumber,
     required dynamic password,
   }) async{
     emit(LoginLoading());
     try{
       loginUserModel =await LoginUserServices().loginServices(
-        email:email,
+        phoneNumber:phoneNumber,
         password:password,
       );
       emit(LoginSuccess());

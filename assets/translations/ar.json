@@ -143,5 +143,17 @@
   "You_Want_The_Attendance_For_Day_Or_Month": " 3- تريد الحضور ليوم او شهر ؟",
   "Show_Homework": "عرض الوظائف المنزلية",
   "Edit_Your_Profile": "تعديل حسابك الشخصي",
-  "Logout": "تسجيل خروج"
+  "Logout": "تسجيل خروج",
+  "Show_Registration_Request_State": "عرض حالة طلب التسجيل",
+  "Student_Evaluations_Archive": "سجل تقييمات الطالب",
+  "evaluation": "التقييم :",
+  "subject": "المادة :",
+  "Enter_Month": "أدخل الشهر",
+  "Enter_year": "أدخل السنة",
+  "Paid_Invoices": "الفواتير المدفوعة :",
+  "Phone_Number_Length_Should_equal_10_Numbers": "رقم الهاتف يجب ان يكون 10 أرقام",
+  "Total_Evaluation": "التقييم الكلي :",
+  "Show_Attendance_Month": "عرض الحضور الشهري",
+  "Show_Attendance_Day": "عرض الحضور اليومي",
+  "Show_Evaluations": "عرض التقييم"
 }

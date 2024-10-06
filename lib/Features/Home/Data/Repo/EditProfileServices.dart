@@ -9,7 +9,6 @@ class EditProfileServices {
     dynamic firstName,
     dynamic lastName,
     dynamic phoneNumber,
-    dynamic email,
     dynamic password,
     required dynamic accessToken,
   })async{
@@ -21,7 +20,6 @@ class EditProfileServices {
       "first_name":firstName,
       "last_name":lastName,
       "phone":phoneNumber,
-      "email":email,
       "password":password
     });
     var  headers={
@@ -35,7 +33,7 @@ class EditProfileServices {
 
     http.StreamedResponse response=await request.send();
 
-    if(response.statusCode==200){
+    if(response.statusCode==200||response.statusCode == 201){
       String data = await response.stream.bytesToString();
       Map<String,dynamic> dataResponse=jsonDecode(data);
       return dataResponse;
@@ -48,7 +46,6 @@ class EditProfileServices {
     dynamic firstName,
     dynamic lastName,
     dynamic phoneNumber,
-    dynamic email,
     dynamic password,
     required dynamic accessToken,
   })async{
@@ -60,7 +57,6 @@ class EditProfileServices {
       "first_name":firstName,
       "last_name":lastName,
       "phone":phoneNumber,
-      "email":email,
       "password":password
     });
     var  headers={

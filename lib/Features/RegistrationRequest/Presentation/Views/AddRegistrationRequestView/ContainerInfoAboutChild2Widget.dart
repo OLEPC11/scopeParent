@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../Core/Widgets/TextWidget.dart';
 import '../../../../../Core/Widgets/CustomWidgets/ContainerWidget.dart';
 import '../../../../../translations/locale_keys.g.dart';
+import '../../../../Home/Cubit/LanguageCubit/LanguageCubit.dart';
 import '../../../Cubit/AddRegistrationRequestCubit.dart';
 import 'AnswerTextFormFieldWidget.dart';
 import 'ContanierRadioWidget.dart';
@@ -25,10 +26,10 @@ class _ContainerInfoAboutChild2WidgetState extends State<ContainerInfoAboutChild
 
   @override
   Widget build(BuildContext context) {
-    // diseasesController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).chronicDiseases ?? '';
-    // allergyController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).typeAllergies ?? '';
-    // medicationController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).medicinesForChild ?? '';
-    // radioValueTemperature = BlocProvider.of<AddRegistrationRequestCubit>(context).dealingWithHeat=="Contact Parent"? 2:BlocProvider.of<AddRegistrationRequestCubit>(context).dealingWithHeat=="Give The Child A Fever Reducer"?1:0;
+    diseasesController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).chronicDiseases ?? '';
+    allergyController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).typeAllergies ?? '';
+    medicationController.text = BlocProvider.of<AddRegistrationRequestCubit>(context).medicinesForChild ?? '';
+    radioValueTemperature = BlocProvider.of<AddRegistrationRequestCubit>(context).dealingWithHeat=="Contact Parent"? 2:BlocProvider.of<AddRegistrationRequestCubit>(context).dealingWithHeat=="Give The Child A Fever Reducer"?1:0;
 
     return   ContainerWidget(
       padding: const EdgeInsets.only(top:50,left: 20,right: 20),
@@ -148,8 +149,23 @@ class _ContainerInfoAboutChild2WidgetState extends State<ContainerInfoAboutChild
             ),
 
           ),
-          Positioned(
+          BlocProvider.of<LanguageCubit>(context).typeLanguage=='en'?Positioned(
             top: 472, left: 70, right: 60,
+            child:Row(
+              children: [
+                Expanded(
+                  child: TextWidget(
+                    text: LocaleKeys.Give_The_Child_A_Fever_Reducer.tr(),
+                    color:const Color(0xFF7DA4FF),
+                    fontSize:15,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Outfit",
+                  ),
+                ),
+              ],
+            ),
+          ):Positioned(
+            top: 472, left: 20, right: 130,
             child:Row(
               children: [
                 Expanded(
